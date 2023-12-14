@@ -8,19 +8,12 @@ import { UserController } from "./controllers/authcontroller";
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./swagger.json";
 import dotenv from "dotenv";
-import path from "path";
-
-dotenv.config({ path: path.resolve(__dirname, ".env") });
+dotenv.config();
 
 // Connect ORM to Database
 const knexInstance = knex({
   client: "postgresql",
-  connection: {
-    port: 5430,
-    database: "car",
-    user: "postgres",
-    password: "bismillah",
-  },
+  connection: process.env["DATABASE_URL"],
 });
 
 Model.knex(knexInstance);
