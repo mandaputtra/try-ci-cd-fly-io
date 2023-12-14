@@ -27,7 +27,7 @@ jobs:
       - name: Create .env file
         run: |
           touch .env
-          echo DATABASE_URL=postgres://postgres:bismillah@localhost:5430/postgres?schema=public >> .env
+          echo DATABASE_URL=postgres://postgres:bismillah@localhost:5432/postgres?schema=public >> .env
       - name: Migrate database
         run: npm run knex migrate:latest && npm run knex seed:run
       - name: Test Coverage
